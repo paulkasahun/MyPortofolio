@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myportofolio/home_page.dart';
-
+import 'views/main_dashboard.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -11,14 +10,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final PageStorageBucket bucket = PageStorageBucket();
     return MaterialApp(
+      title: 'My Portfolio',
       debugShowCheckedModeBanner: false,
-      title: 'My Portofolio',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: PageStorage(
+        bucket: bucket,
+        child: const MainDashBoard(),
+      ),
     );
   }
 }
